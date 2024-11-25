@@ -66,59 +66,88 @@
     </form>
 
     <script>
-    function validateForm() {
-        let isValid = true;
-
-        // Проверка имени
+    function validateFullName() {
         const fullName = document.getElementById('fullName');
         if (!fullName.checkValidity()) {
             document.getElementById('fullNameError').textContent = 'Неверный формат имени';
-            isValid = false;
+            return false;
         }
+        document.getElementById('fullNameError').textContent = '';
+        return true;
+    }
 
-        // Проверка электронной почты
+    function validateEmail() {
         const email = document.getElementById('email');
         if (!email.checkValidity()) {
             document.getElementById('emailError').textContent = 'Неверный формат электронной почты';
-            isValid = false;
+            return false;
         }
+        document.getElementById('emailError').textContent = '';
+        return true;
+    }
 
-        // Проверка возраста
+    function validateAge() {
         const age = document.getElementById('age');
         if (!age.checkValidity()) {
             document.getElementById('ageError').textContent = 'Возраст должен быть от 18 до 100';
-            isValid = false;
+            return false;
         }
+        document.getElementById('ageError').textContent = '';
+        return true;
+    }
 
-        // Проверка страны
+    function validateCountry() {
         const country = document.getElementById('country');
         if (country.value === '') {
             document.getElementById('countryError').textContent = 'Пожалуйста, выберите страну';
-            isValid = false;
+            return false;
         }
+        document.getElementById('countryError').textContent = '';
+        return true;
+    }
 
-        // Проверка способа связи
+    function validateContactMethod() {
         const contactMethods = document.getElementsByName('contactMethod');
         if (![...contactMethods].some(radio => radio.checked)) {
             document.getElementById('contactMethodError').textContent = 'Выберите способ связи';
-            isValid = false;
+            return false;
         }
+        document.getElementById('contactMethodError').textContent = '';
+        return true;
+    }
 
-        // Проверка согласия с условиями
+    function validateTerms() {
         const terms = document.getElementById('terms');
         if (!terms.checked) {
             document.getElementById('termsError').textContent = 'Вы должны согласиться с условиями';
-            isValid = false;
+            return false;
         }
+        document.getElementById('termsError').textContent = '';
+        return true;
+    }
 
-        // Проверка пароля
+    function validatePassword() {
         const password = document.getElementById('password');
         if (!password.checkValidity()) {
             document.getElementById('passwordError').textContent = 'Пароль не соответствует требованиям';
-            isValid = false;
+            return false;
         }
+        document.getElementById('passwordError').textContent = '';
+        return true;
+    }
 
-        return isValid;
+    function validateForm() {
+        let isValid = true;
+
+        isValid &= validateFullName();
+        isValid &= validateEmail();
+        isValid &= validateAge();
+        isValid &= validateCountry();
+        isValid &= validateContactMethod();
+        isValid &= validateTerms();
+        isValid &= validatePassword();
+
+        return isValid; // Возвращаем общее состояние валидации
     }
     </script>
 </body>
