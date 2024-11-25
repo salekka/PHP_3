@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f0f4f8; /* Светлый фон */
+    color: #333; /* Темный текст */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    background-color: #e7eff6; /* Светло-синий фон для групп */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    color: #d9534f; /* Красный цвет для ошибок */
+    font-size: 0.8em;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #b0c4de; /* Светло-синий бордер */
+    border-radius: 4px;
+    background-color: #ffffff; /* Белый фон для полей ввода */
+}
+
+input:focus, select:focus {
+    border-color: #4682b4; /* Темно-синий бордер при фокусе */
+    outline: none; /* Убираем стандартное выделение */
+}
+
+button {
+    background-color: #4682b4; /* Темно-синий фон для кнопки */
+    color: white; /* Белый текст на кнопке */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #5a9bd4; /* Более светлый синий при наведении */
+}

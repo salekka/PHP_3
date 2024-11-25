@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+    <link rel="stylesheet" href="style.css"> <!-- Подключение внешнего файла стилей -->
+</head>
+<body>
+    <form id="comprehensiveForm" action="process.php" method="post" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="fullName">Полное имя:</label>
+            <input type="text" id="fullName" name="fullName" required 
+                   pattern="[А-Яа-яЁё\s]{3,50}"
+                   title="Имя должно содержать от 3 до 50 символов">
+            <div id="fullNameError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Электронная почта:</label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Возраст:</label>
+            <input type="number" id="age" name="age" min="18" max="100" required>
+            <div id="ageError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="country">Страна:</label>
+            <select id="country" name="country" required>
+                <option value="">Выберите страну</option>
+                <option value="usa">Россия</option>
+                <option value="canada">Казахстан</option>
+                <option value="uk">Беларусь</option>
+            </select>
+            <div id="countryError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Предпочтительный способ связи:</label>
+            <div>
+                <input type="radio" id="email_contact" name="contactMethod" value="email" required>
+                <label for="email_contact">Электронная почта</label>
+                <input type="radio" id="phone_contact" name="contactMethod" value="phone">
+                <label for="phone_contact">Телефон</label>
+            </div>
+            <div id="contactMethodError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">Я согласен с условиями</label>
+            <div id="termsError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password"
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="Пароль должен содержать как минимум одну цифру и одну заглавную и строчную букву, длина не менее 8 символов." required>
+            <div id="passwordError" class="error"></div>
+        </div>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <script>
+    function validateForm() {
+        let isValid = true;
+
+        // Проверка имени
+        const fullName = document.getElementById('fullName');
+        if (!fullName.checkValidity()) {
+            document.getElementById('fullNameError').textContent = 'Неверный формат имени';
+            isValid = false;
+        }
+
+        // Проверка электронной почты
+        const email = document.getElementById('email');
+        if (!email.checkValidity()) {
+            document.getElementById('emailError').textContent = 'Неверный формат электронной почты';
+            isValid = false;
+        }
+
+        // Проверка возраста
+        const age = document.getElementById('age');
+        if (!age.checkValidity()) {
+            document.getElementById('ageError').textContent = 'Возраст должен быть от 18 до 100';
+            isValid = false;
+        }
+
+        // Проверка страны
+        const country = document.getElementById('country');
+        if (country.value === '') {
+            document.getElementById('countryError').textContent = 'Пожалуйста, выберите страну';
+            isValid = false;
+        }
+
+        // Проверка способа связи
+        const contactMethods = document.getElementsByName('contactMethod');
+        if (![...contactMethods].some(radio => radio.checked)) {
+            document.getElementById('contactMethodError').textContent = 'Выберите способ связи';
+            isValid = false;
+        }
+
+        // Проверка согласия с условиями
+        const terms = document.getElementById('terms');
+        if (!terms.checked) {
+            document.getElementById('termsError').textContent = 'Вы должны согласиться с условиями';
+            isValid = false;
+        }
+
+        // Проверка пароля
+        const password = document.getElementById('password');
+        if (!password.checkValidity()) {
+            document.getElementById('passwordError').textContent = 'Пароль не соответствует требованиям';
+            isValid = false;
+        }
+
+        return isValid;
+    }
+    </script>
+</body>
+</html>
