@@ -19,7 +19,7 @@ function validateAge($age)
 
 function validateCountry($country)
 {
-    $validCountries = ['usa', 'canada', 'uk'];
+    $validCountries = ['Россия', 'Казахстан', 'Беларусь'];
     return in_array($country, $validCountries);
 }
 
