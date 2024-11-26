@@ -22,13 +22,14 @@ body
     font-size: 0.8em;
 }
 
-input, select {
+input, select 
+{
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #b0c4de; /* Светло-синий бордер */
+    border: 1px solid #b0c4de; 
     border-radius: 4px;
-    background-color: #ffffff; /* Белый фон для полей ввода */
+    background-color: #ffffff; 
 }
 
 input:focus, select:focus 
